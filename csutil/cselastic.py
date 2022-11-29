@@ -3,13 +3,13 @@ import dgl
 import torch
 
 ## https://blog.csdn.net/znsoft/article/details/114515868
-def x_message_func(edges):   # 消息函数  k为弹簧系数  0.8
+def x_message_func(edges):   #  0.8
     msg = (edges.dst['nodegrid'] - edges.src['nodegrid']) - (edges.dst['nodereg'] - edges.src['nodegrid'])    ## h*norm   更新边权重 源头点的h*源头点的正则化参数
-    msg = np.clip(msg, -2, 2)     ## -5 与5为截断阈值
+    msg = np.clip(msg, -2, 2)     ##
     return {'m': msg}
 
-def x_gcn_reduce(nodes):  # 聚合函数
-    dx = torch.sum(nodes.mailbox['m'], 1)  ## 汇聚消息，并对消息进行归一化   更新点权重
+def x_gcn_reduce(nodes):  #
+    dx = torch.sum(nodes.mailbox['m'], 1)  ##
     locdif = 0.9 * (nodes.data['nodereg'] - nodes.data['nodegrid']) + 0.2 * dx
     # nodes.data['locdif'] = locdif
     # nodes.data['nodereg'] = nodes.data['nodereg'] + locdif

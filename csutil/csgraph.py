@@ -137,10 +137,10 @@ def SmallareaTemplatejMatch(img1, img2, TMparameter):
 
 def Elastic_Graph(graph_param, TMscore, TMlocc_grid, TMlocc_reg, graph_update_flag):
     graph_row = graph_param.bigrow + graph_param.bigrow - 1
-    g = nx.Graph()  # 创建空的无向图
+    g = nx.Graph()  #
     oneidx = 0
     graph_dict = {}
-    ## 加点
+    ##
     for i in range(graph_row):
         if i % 2 == 0:
             for j in range(graph_param.bigcol):
@@ -157,7 +157,7 @@ def Elastic_Graph(graph_param, TMscore, TMlocc_grid, TMlocc_reg, graph_update_fl
                 graph_dict.update(tempdic_item)
                 oneidx = oneidx + 1
 
-    ## 加边
+    ##
     for i in range(graph_row):
         if i == graph_row - 1:
             for j in range(graph_param.bigcol - 1):

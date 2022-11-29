@@ -9,13 +9,13 @@ import copy
 
 from csutil.csgraph import Elastic_Graph
 
-## 计算传递消息的最小值
+##
 def dt(h,lgdif_locini,lgdif_locnei):
     n = len(h)
 
-    dtemp = np.zeros(n)       # 相当于计算fq的纵坐标
-    v = np.zeros(n)       # 与下包洛顶点横坐标对应的h的序号
-    z = np.zeros(n + 1)   # 抛物线之间的交点的横坐标
+    dtemp = np.zeros(n)       #
+    v = np.zeros(n)       #
+    z = np.zeros(n + 1)   #
 
     v[0] = 0
     z[0] = float('-inf')
@@ -25,8 +25,8 @@ def dt(h,lgdif_locini,lgdif_locnei):
     lgdif_locnei_temp = lgdif_locnei[lgdif_locnei_sortid]
     htemp = h[lgdif_locnei_sortid]
 
-    ## 计算下包络
-    j = 0  # j-1 是交点的个数， j可以看成是交点的索引
+    ##
+    j = 0  # j-1
     for q in range(1,n-1,1):
         s = ((htemp[q] + (lgdif_locnei_temp[q]) ** 2) - (htemp[int(v[j])] + (lgdif_locnei_temp[int(v[j])]) ** 2)) \
             / (2 * (lgdif_locnei_temp[q] - lgdif_locnei_temp[int(v[j])]) + 0.0000001)
@@ -36,11 +36,11 @@ def dt(h,lgdif_locini,lgdif_locnei):
                 / (2 * (lgdif_locnei_temp[q] - lgdif_locnei_temp[int(v[j])]) + 0.0000001)
 
         j = j + 1
-        v[j] = q    # 索引
-        z[j] = s    # 坐标
+        v[j] = q    #
+        z[j] = s    #
         z[j + 1] = float('inf')
 
-    ## 将下包络值填充完整
+    ##
     j = 0
     lgdif_locini_sortid = np.argsort(lgdif_locini)
     lgdif_locini_temp = lgdif_locini[lgdif_locini_sortid]
@@ -53,20 +53,20 @@ def dt(h,lgdif_locini,lgdif_locnei):
     d[lgdif_locini_sortid] = dtemp
     return d
 
-## 计算消息
+##
 def msg(direction1, direction2, direction3, datacost, lgdif_locini, lgdif_locnei, BPparameter):
-    # 聚合并查找最小值
+    #
     dst = direction1 + direction2 + direction3 + datacost   # 要往某个方向传播的消息的汇总，三个方向加一个自身datacost
     miniC = min(dst)
     tmp = dt(dst,lgdif_locini,lgdif_locnei)
 
-    # 截断并存储在目标向量中
+    #
     disc_k = BPparameter.disc_k
     miniC = miniC + disc_k
     dst = [min(x, miniC) for x in tmp]
     dst = np.array(dst)
 
-    # 归一化
+    #
     val = sum(dst[:])
     val = val / (len(lgdif_locini))
     dst = dst - val
@@ -95,29 +95,16 @@ def bp_cp(u, d, l, r, datacost, lgdif_loc, BPparameter):
 
     return u,d,l,r
 
-## BP算法开始运行
+##
 def run_BP(TMscore, TMlocc_reg, TMlocc_grid, graph_dict, Graphparameter, BPparameter):
-    ## 对点进行分类
-    # TMscore_thresholdL = BPparameter.TMscore_thresholdL  ## 0.15
-    # TMscore_thresholdH = np.median(TMscore)
-    # TMscore_loc_fixed = np.where((TMscore > TMscore_thresholdL) & (TMscore <= TMscore_thresholdH))
-    # TMscore_loc_weight = np.where(TMscore > TMscore_thresholdH)
-    # TMscore_loc_change = np.where(TMscore <= TMscore_thresholdL)
-    # TMscore_loc_fixed = TMscore_loc_fixed[0]
-    # TMscore_loc_weight = TMscore_loc_weight[0]
-    # TMscore_loc_change = TMscore_loc_change[0]  # flag = 1 要变的
-    # graph_update_flag = np.ones(len(TMscore))
-    # graph_update_flag[TMscore_loc_fixed] = 0  # 0 不变，也不生成选择
-    # graph_update_flag[TMscore_loc_weight] = 2  # 2 不变，生成选择
-
     TMscore_loc_weight = BPparameter.TMscore_loc_weight
     TMscore_loc_change = BPparameter.TMscore_loc_change
 
-    ## 构建BP
-    ############ 计算datacost
-    ## BP数组准备
+    ##
+    ############
+    ##
     bplambda = BPparameter.bplambda       ## 0.05
-    data_k = BPparameter.data_k           ## 10  ############设置的截断阈值
+    data_k = BPparameter.data_k           ## 10  ############
     even_dataCost_x = np.zeros((Graphparameter.bigrow, Graphparameter.bigcol, len(TMscore_loc_weight)))
     even_dataCost_y = np.zeros((Graphparameter.bigrow, Graphparameter.bigcol, len(TMscore_loc_weight)))
     odd_dataCost_x = np.zeros((Graphparameter.bigrow - 1, Graphparameter.bigcol - 1, len(TMscore_loc_weight)))
@@ -130,8 +117,8 @@ def run_BP(TMscore, TMlocc_reg, TMlocc_grid, graph_dict, Graphparameter, BPparam
     odd_lable_loc = np.zeros((Graphparameter.bigrow - 1, Graphparameter.bigcol - 1, len(TMscore_loc_weight), 2))
     all_lable_loc = np.zeros((len(TMscore), len(TMscore_loc_weight), 2))
 
-    even_graph_dic = {}  # 偶图
-    odd_graph_dic = {}  # 奇图
+    even_graph_dic = {}  #
+    odd_graph_dic = {}  #
     for i in range(len(TMscore)):
         if i in TMscore_loc_change:
             change_id = i
@@ -202,15 +189,15 @@ def run_BP(TMscore, TMlocc_reg, TMlocc_grid, graph_dict, Graphparameter, BPparam
                 odd_lable_loc[int((fixed_graph_id[0] - 1) / 2), fixed_graph_id[1], :, :] = np.tile(TMlocc_reg[i], (
                 len(TMscore_loc_weight), 1))
 
-    #############运行BP算法
-    #### 偶行图像
+    #############
+    ####
     ## y
     u = copy.deepcopy(even_dataCost_y)
     d = copy.deepcopy(even_dataCost_y)
     l = copy.deepcopy(even_dataCost_y)
     r = copy.deepcopy(even_dataCost_y)
     u, d, l, r = bp_cp(u, d, l, r, even_dataCost_y, even_lgdif_loc[:, :, :, 0], BPparameter)
-    ## 从当前消息生成输出
+    ##
     even_out = np.zeros((Graphparameter.bigrow, Graphparameter.bigcol, 2))
     for y in range(1, Graphparameter.bigrow + 1, 1):
         for x in range(1, Graphparameter.bigcol + 1, 1):
@@ -224,21 +211,21 @@ def run_BP(TMscore, TMlocc_reg, TMlocc_grid, graph_dict, Graphparameter, BPparam
     l = copy.deepcopy(even_dataCost_x)
     r = copy.deepcopy(even_dataCost_x)
     u, d, l, r = bp_cp(u, d, l, r, even_dataCost_x, even_lgdif_loc[:, :, :, 1], BPparameter)
-    ## 从当前消息生成输出
+    ##
     for y in range(1, Graphparameter.bigrow + 1, 1):
         for x in range(1, Graphparameter.bigcol + 1, 1):
             v = u[y + 1, x, :] + d[y - 1, x, :] + l[y, x + 1, :] + r[y, x - 1, :] + even_dataCost_x[y - 1, x - 1]
             lable_id = np.argmin(v)
             even_out[y - 1, x - 1, 1] = even_lable_loc[y - 1, x - 1, lable_id, 1]
 
-    #### 奇行图像
+    ####
     ## y
     u = copy.deepcopy(odd_dataCost_y)
     d = copy.deepcopy(odd_dataCost_y)
     l = copy.deepcopy(odd_dataCost_y)
     r = copy.deepcopy(odd_dataCost_y)
     u, d, l, r = bp_cp(u, d, l, r, odd_dataCost_y, odd_lgdif_loc[:, :, :, 0], BPparameter)
-    ## 从当前消息生成输出
+    ##
     odd_out = np.zeros((Graphparameter.bigrow - 1, Graphparameter.bigcol - 1, 2))
     for y in range(1, Graphparameter.bigrow, 1):
         for x in range(1, Graphparameter.bigcol, 1):
@@ -252,7 +239,7 @@ def run_BP(TMscore, TMlocc_reg, TMlocc_grid, graph_dict, Graphparameter, BPparam
     l = copy.deepcopy(odd_dataCost_x)
     r = copy.deepcopy(odd_dataCost_x)
     u, d, l, r = bp_cp(u, d, l, r, odd_dataCost_x, odd_lgdif_loc[:, :, :, 1], BPparameter)
-    ## 从当前消息生成输出
+    ##
     for y in range(1, Graphparameter.bigrow, 1):
         for x in range(1, Graphparameter.bigcol, 1):
             v = u[y + 1, x, :] + d[y - 1, x, :] + l[y, x + 1, :] + r[y, x - 1, :] + odd_dataCost_x[y - 1, x - 1]
@@ -292,7 +279,7 @@ if __name__ == '__main__':
     data = scio.loadmat(tempdatadir + 'TMlocc_grid.mat')
     TMlocc_grid = data['TMlocc_grid']
 
-    ## 对点进行分类
+    ##
     TMscore_thresholdL = 0.15
     TMscore_thresholdH = np.median(TMscore)
     TMscore_loc_fixed = np.where((TMscore > TMscore_thresholdL) & (TMscore <= TMscore_thresholdH))
@@ -300,155 +287,12 @@ if __name__ == '__main__':
     TMscore_loc_change = np.where(TMscore <= TMscore_thresholdL)
     TMscore_loc_fixed = TMscore_loc_fixed[0]
     TMscore_loc_weight = TMscore_loc_weight[0]
-    TMscore_loc_change = TMscore_loc_change[0]   # flag = 1 要变的
+    TMscore_loc_change = TMscore_loc_change[0]   #
     graph_update_flag = np.ones(len(TMscore))
-    graph_update_flag[TMscore_loc_fixed] = 0    # 0 不变，也不生成选择
-    graph_update_flag[TMscore_loc_weight] = 2   # 2 不变，生成选择
+    graph_update_flag[TMscore_loc_fixed] = 0    #
+    graph_update_flag[TMscore_loc_weight] = 2   #
 
     g, graph_dict = Elastic_Graph(opt, TMscore, TMlocc_reg, graph_update_flag)
-    # nx.draw_networkx(g)
-    # plt.show()
-    # plt.savefig('../img/temp/graph.jpg')
-    #
-    # dglg = dgl.from_networkx(g, node_attrs = ['update_flag', 'nodescore', 'nodeloc'])  # 转换成DGL图
-    # cuda_g = dglg.to('cuda:0')  # # 原始特征在CPU上   接受来自后端框架的任何设备对象
-
-    # ## 构建BP
-    # ############ 计算datacost
-    # bplambda = 0.05
-    # data_k = 10  ############设置的截断阈值
-    # even_dataCost_x = np.zeros((opt.bigrow, opt.bigcol, len(TMscore_loc_weight)))
-    # even_dataCost_y = np.zeros((opt.bigrow, opt.bigcol, len(TMscore_loc_weight)))
-    # odd_dataCost_x = np.zeros((opt.bigrow - 1, opt.bigcol - 1, len(TMscore_loc_weight)))
-    # odd_dataCost_y = np.zeros((opt.bigrow - 1, opt.bigcol - 1, len(TMscore_loc_weight)))
-    #
-    # even_lgdif_loc = np.zeros((opt.bigrow, opt.bigcol, len(TMscore_loc_weight), 2))
-    # odd_lgdif_loc = np.zeros((opt.bigrow - 1, opt.bigcol - 1, len(TMscore_loc_weight), 2))
-    #
-    # even_lable_loc = np.zeros((opt.bigrow, opt.bigcol, len(TMscore_loc_weight), 2))
-    # odd_lable_loc = np.zeros((opt.bigrow - 1, opt.bigcol - 1, len(TMscore_loc_weight), 2))
-    # all_lable_loc = np.zeros((len(TMscore), len(TMscore_loc_weight), 2))
-    #
-    # even_graph_dic = {}    # 偶图
-    # odd_graph_dic = {}      # 奇图
-    # for i in range(len(TMscore)):
-    #     if i in TMscore_loc_change:
-    #         change_id = i
-    #         change_graph_id = graph_dict[change_id]
-    #
-    #         for j in range(len(TMscore_loc_weight)):
-    #             weight_id = TMscore_loc_weight[j]
-    #             weight_graph_id = graph_dict[weight_id]
-    #             newlable_row = TMlocc_reg[weight_id][1] - (weight_graph_id[0] - change_graph_id[0]) * opt.grid_radius_x
-    #             if ((weight_graph_id[0] - change_graph_id[0]) % 2) == 0:
-    #                 newlable_col = TMlocc_reg[weight_id][0] - (weight_graph_id[1] - change_graph_id[1]) * opt.grid_radius_y * 2
-    #             else:
-    #                 if (change_graph_id[0] % 2) == 0:
-    #                     newlable_col = TMlocc_reg[weight_id][0] - (weight_graph_id[1] - change_graph_id[1]) * opt.grid_radius_y * 2 - opt.grid_radius_y
-    #                 else:
-    #                     newlable_col = TMlocc_reg[weight_id][0] - (weight_graph_id[1] - change_graph_id[1]) * opt.grid_radius_y * 2 + opt.grid_radius_y
-    #
-    #             all_lable_loc[change_id, j, :] = [newlable_col, newlable_row]
-    #             ##(TMlocc_reg[change_id][0] - newlable_col) ** 2 + (TMlocc_reg[change_id][1] - newlable_row) ** 2
-    #             gg_y = (TMlocc_reg[change_id][0] - newlable_col) ** 2
-    #             gg_x = (TMlocc_reg[change_id][1] - newlable_row) ** 2
-    #
-    #             lgdif_y = newlable_col - TMlocc_grid[change_id][0]
-    #             lgdif_x = newlable_row - TMlocc_grid[change_id][1]
-    #             lgdif_loc = [lgdif_y, lgdif_x]
-    #
-    #             if (change_graph_id[0] % 2) == 0:
-    #                 tempdic_item = {change_id: change_graph_id}
-    #                 even_graph_dic.update(tempdic_item)
-    #
-    #                 even_dataCost_y[int(change_graph_id[0] / 2), change_graph_id[1], j] = bplambda * gg_y
-    #                 even_dataCost_x[int(change_graph_id[0] / 2), change_graph_id[1], j] = bplambda * gg_x
-    #
-    #                 even_lgdif_loc[int(change_graph_id[0] / 2), change_graph_id[1], j, :] = lgdif_loc
-    #                 even_lable_loc[int(change_graph_id[0] / 2), change_graph_id[1], j, :] = [newlable_col, newlable_row]
-    #             else:
-    #                 tempdic_item = {change_id: change_graph_id}
-    #                 odd_graph_dic.update(tempdic_item)
-    #
-    #                 odd_dataCost_y[int((change_graph_id[0] - 1) / 2), change_graph_id[1], j] = bplambda * gg_y
-    #                 odd_dataCost_x[int((change_graph_id[0] - 1) / 2), change_graph_id[1], j] = bplambda * gg_x
-    #
-    #                 odd_lgdif_loc[int((change_graph_id[0] - 1) / 2), change_graph_id[1], j, :] = lgdif_loc
-    #                 odd_lable_loc[int((change_graph_id[0] - 1) / 2), change_graph_id[1], j, :] = [newlable_col, newlable_row]
-    #     else:
-    #         lgdif_y = TMlocc_reg[i][0] - TMlocc_grid[i][0]
-    #         lgdif_x = TMlocc_reg[i][1] - TMlocc_grid[i][1]
-    #         lgdif_loc = [lgdif_y, lgdif_x]
-    #         lgdif_loc = np.tile(lgdif_loc, (len(TMscore_loc_weight), 1))
-    #
-    #         fixed_graph_id = graph_dict[i]
-    #         if (fixed_graph_id[0] % 2) == 0:
-    #             tempdic_item = {i: fixed_graph_id}
-    #             even_graph_dic.update(tempdic_item)
-    #             even_lgdif_loc[int(fixed_graph_id[0] / 2), fixed_graph_id[1], :, :] = lgdif_loc
-    #             even_lable_loc[int(fixed_graph_id[0] / 2), fixed_graph_id[1], :, :] = np.tile(TMlocc_reg[i], (len(TMscore_loc_weight), 1))
-    #         else:
-    #             tempdic_item = {i: fixed_graph_id}
-    #             odd_graph_dic.update(tempdic_item)
-    #             odd_lgdif_loc[int((fixed_graph_id[0] - 1) / 2), fixed_graph_id[1], :, :] = lgdif_loc
-    #             odd_lable_loc[int((fixed_graph_id[0] - 1) / 2), fixed_graph_id[1], :, :] = np.tile(TMlocc_reg[i], (len(TMscore_loc_weight), 1))
-    #
-    # #############运行BP算法
-    # #### 偶行图像
-    # ## y
-    # u = copy.deepcopy(even_dataCost_y)
-    # d = copy.deepcopy(even_dataCost_y)
-    # l = copy.deepcopy(even_dataCost_y)
-    # r = copy.deepcopy(even_dataCost_y)
-    # u,d,l,r = bp_cp(u, d, l, r, even_dataCost_y, even_lgdif_loc[:, :, :, 0], 10)
-    # ## 从当前消息生成输出
-    # even_out = np.zeros((opt.bigrow, opt.bigcol, 2))
-    # for y in range(1, opt.bigrow + 1, 1):
-    #     for x in range(1, opt.bigcol + 1, 1):
-    #         v = u[y + 1, x,:]+d[y - 1, x,:]+l[y, x + 1,:]+r[y, x - 1,:]+even_dataCost_y[y-1, x-1]
-    #         lable_id = np.argmin(v)
-    #         even_out[y-1,x-1,0] = even_lable_loc[y-1,x-1,lable_id,0]
-    #
-    # ## x
-    # u = copy.deepcopy(even_dataCost_x)
-    # d = copy.deepcopy(even_dataCost_x)
-    # l = copy.deepcopy(even_dataCost_x)
-    # r = copy.deepcopy(even_dataCost_x)
-    # u, d, l, r = bp_cp(u, d, l, r, even_dataCost_x, even_lgdif_loc[:, :, :, 1], 10)
-    # ## 从当前消息生成输出
-    # for y in range(1, opt.bigrow + 1, 1):
-    #     for x in range(1, opt.bigcol + 1, 1):
-    #         v = u[y + 1, x, :] + d[y - 1, x, :] + l[y, x + 1, :] + r[y, x - 1, :] + even_dataCost_x[y - 1, x - 1]
-    #         lable_id = np.argmin(v)
-    #         even_out[y - 1, x - 1, 1] = even_lable_loc[y - 1, x - 1, lable_id, 1]
-    #
-    # #### 奇行图像
-    # ## y
-    # u = copy.deepcopy(odd_dataCost_y)
-    # d = copy.deepcopy(odd_dataCost_y)
-    # l = copy.deepcopy(odd_dataCost_y)
-    # r = copy.deepcopy(odd_dataCost_y)
-    # u, d, l, r = bp_cp(u, d, l, r, odd_dataCost_y, odd_lgdif_loc[:, :, :, 0], 10)
-    # ## 从当前消息生成输出
-    # odd_out = np.zeros((opt.bigrow - 1, opt.bigcol - 1, 2))
-    # for y in range(1, opt.bigrow, 1):
-    #     for x in range(1, opt.bigcol, 1):
-    #         v = u[y + 1, x, :] + d[y - 1, x, :] + l[y, x + 1, :] + r[y, x - 1, :] + odd_dataCost_y[y - 1, x - 1]
-    #         lable_id = np.argmin(v)
-    #         odd_out[y - 1, x - 1, 0] = odd_lable_loc[y - 1, x - 1, lable_id, 0]
-    #
-    # ## x
-    # u = copy.deepcopy(odd_dataCost_x)
-    # d = copy.deepcopy(odd_dataCost_x)
-    # l = copy.deepcopy(odd_dataCost_x)
-    # r = copy.deepcopy(odd_dataCost_x)
-    # u, d, l, r = bp_cp(u, d, l, r, odd_dataCost_x, odd_lgdif_loc[:, :, :, 1], 10)
-    # ## 从当前消息生成输出
-    # for y in range(1, opt.bigrow, 1):
-    #     for x in range(1, opt.bigcol, 1):
-    #         v = u[y + 1, x, :] + d[y - 1, x, :] + l[y, x + 1, :] + r[y, x - 1, :] + odd_dataCost_x[y - 1, x - 1]
-    #         lable_id = np.argmin(v)
-    #         odd_out[y - 1, x - 1, 1] = odd_lable_loc[y - 1, x - 1, lable_id, 1]
 
     parser_BP = argparse.ArgumentParser(description='BP parameter')
     parser_BP.add_argument('--TMscore_thresholdL', default=0.15, type=int, help='TMscore_thresholdL')
@@ -466,7 +310,7 @@ if __name__ == '__main__':
                          interpolation=cv2.INTER_AREA)
     if img1ori.ndim == 3:
         imgtemp1 = cv2.cvtColor(img1ori, cv2.COLOR_RGB2GRAY)
-    # 直方图均衡化
+    #
     imgtemp1 = cv2.equalizeHist(imgtemp1)
     for y in range(opt.bigrow):
         for x in range(opt.bigcol):

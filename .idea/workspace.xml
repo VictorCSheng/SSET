@@ -2,32 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="518d7738-9de7-480d-8780-8fd66869d78d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1imgrename_mrctif.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2imgava_mrctif.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3_0coarsealign.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3_1finealignpre.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4finealign.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/5stackdeformation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6stackselectarea.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/7insertnumcal.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/8Integrated_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compare_ssimandpsnr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/connectedcomponents.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/.idea/stack.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/coarsealign.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/csBP.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/cselastic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/csgraph.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/densesift.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/imgfeature.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/csutil/util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csutil/coarsealign.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/coarsealign.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csutil/csBP.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/csBP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csutil/cselastic.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/cselastic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csutil/csgraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/csgraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csutil/imgfeature.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/imgfeature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csutil/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +52,7 @@
       <updated>1669618976415</updated>
       <workItem from="1669618980232" duration="123000" />
       <workItem from="1669622683163" duration="2088000" />
-      <workItem from="1669685815460" duration="3102000" />
+      <workItem from="1669685815460" duration="3991000" />
     </task>
     <servers />
   </component>

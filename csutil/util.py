@@ -16,7 +16,7 @@ import math
 display_height = 1080
 display_weight = 1080    #2160
 
-# 等比例调整cv2图像的大小使其正常显示
+#
 def ResizeWithAspectRatio(image, width=None, height=1080, inter=cv2.INTER_AREA):
     (h, w) = image.shape[:2]
     if width is None and height is None:
@@ -32,14 +32,14 @@ def ResizeWithAspectRatio(image, width=None, height=1080, inter=cv2.INTER_AREA):
 
     return cv2.resize(image, img_new_size, interpolation=inter)
 
-# 将要裁剪图像的尺寸转换为原图的大小
+#
 def GetoricutSize(image, display_height, tl, br):
     (h, w) = image.shape[:2]
     tl_cut = [math.ceil(tl[0] * h / display_height), math.ceil(tl[1] * h / display_height)]
     br_cut = [math.ceil(br[0] * h / display_height), math.ceil(br[1] * h / display_height)]
     return (tl_cut, br_cut)
 
-# 鼠标事件——绘制矩形
+#
 def get_rect(im, title='get_rect'):   #   (a,b) = get_rect(im, title='get_rect')
     mouse_params = {'tl': None, 'br': None, 'current_pos': None, 'left_button_down': False}
 
@@ -79,7 +79,7 @@ def get_rect(im, title='get_rect'):   #   (a,b) = get_rect(im, title='get_rect')
 
     return (tl, br)  #tl=(y1,x1), br=(y2,x2)
 
-# 计算图像配准图像的共有区域
+#
 def imgintersection(TEMs_coarse_s_dir, TEMs_reg_config_dir, imgnamelist):
     imgsum = 0
     for i in range(len(imgnamelist)):
@@ -92,7 +92,7 @@ def imgintersection(TEMs_coarse_s_dir, TEMs_reg_config_dir, imgnamelist):
 
         img_cal = img_cal + 1
 
-        # 阈值分割 + 腐蚀处理
+        #
         erode_kernel = np.ones((10, 10), np.uint8)
 
         ret_tems, th_tems = cv2.threshold(img_TEMs, 250, 255, cv2.THRESH_BINARY)
@@ -141,7 +141,7 @@ def imgintersection(TEMs_coarse_s_dir, TEMs_reg_config_dir, imgnamelist):
 
     return deformation_mat, new_x_length, new_y_length
 
-# 计算图像配准图像的共有区域
+#
 def stackareaselect(TOM_fine_dir):
     imgnamelist = os.listdir(TOM_fine_dir)
     imgsum = 0
@@ -155,7 +155,7 @@ def stackareaselect(TOM_fine_dir):
 
         img_cal = img_cal + 1
 
-        # 阈值分割 + 腐蚀处理
+        #
         erode_kernel = np.ones((10, 10), np.uint8)
 
         ret_tems, th_tems = cv2.threshold(img_TOM, 250, 255, cv2.THRESH_BINARY)
@@ -185,7 +185,7 @@ def stackareaselect(TOM_fine_dir):
     return tl_cut, br_cut
 
 
-# 读取文件夹中的图像
+#
 def load_Img(imgDir,imgFoldName):
      imgs = os.listdir(imgDir+imgFoldName)
      imgNum = len(imgs)
@@ -198,74 +198,60 @@ def load_Img(imgDir,imgFoldName):
          label[i] = int(imgs[i].split('.')[0])
      return data,label
 
-# 16位图像转8位图像
+#
 def transfer_16bit_to_8bit(image_16bit):
     min_16bit = np.min(image_16bit)
     max_16bit = np.max(image_16bit)
     # image_8bit = np.array(np.rint((255.0 * (image_16bit - min_16bit)) / float(max_16bit - min_16bit)), dtype=np.uint8)
-    # 或者下面一种写法
+    #
     image_8bit = np.array(np.rint(255 * ((image_16bit - min_16bit) / (max_16bit - min_16bit))), dtype=np.uint8)
     return image_8bit
 
-# mrc图像展示
+#
 import matplotlib.pyplot as plt
 def mrcimgshow(mrcdata):
-    # 打开交互模式
+    #
     plt.ion()
     fig = plt.figure('MRC')
     # fig2 = plt.figure('subImg')
     
     for i in range(0, len(mrcdata)):
-    	# 进行自己的处理
+    	#
         img = mrcdata[i,:,:]
         img = transfer_16bit_to_8bit(img)
-    
-    	#--------动态显示----------#
+
         ax1 = fig.add_subplot(1, 1, 1)
-        ax1.axis('off')  # 关掉坐标轴
+        ax1.axis('off')  #
         ax1.imshow(img, cmap='gray')
-    #	ax1.plot(p1[:, 0], p1[:, 1], 'g.')
-    	#停顿时间
         plt.pause(0.2)
-    	#清除当前画布
         fig.clf()
     
     plt.ioff()
 
 def listimgshow(listimg):
-    # 打开交互模式
     plt.ion()
     fig = plt.figure('LIST')
     # fig2 = plt.figure('subImg')
     
     for i in range(0, len(listimg)):
-    	# 进行自己的处理
+    	#
         img = listimg[i]
-    
-    	#--------动态显示----------#
+
         ax1 = fig.add_subplot(1, 1, 1)
         ax1.axis('off')  # 关掉坐标轴
         ax1.imshow(img, cmap='gray')
     #	ax1.plot(p1[:, 0], p1[:, 1], 'g.')
-    	#停顿时间
         plt.pause(0.2)
-    	#清除当前画布
         fig.clf()
     
     plt.ioff()
 
-# 将mrc图像保存为gif
+#
 import imageio
 def create_gif(image_list, gif_name, duration = 0.3):
-    '''
-    :param image_list: 这个列表用于存放生成动图的图片
-    :param gif_name: 字符串，所生成gif文件名，带.gif后缀
-    :param duration: 图像间隔时间
-    :return:
-    ''' 
     frames = []
     for i in range(len(image_list)):
-    	# 进行自己的处理
+    	#
 #        img = image_list[i,:,:]
         img = image_list[i]
         img = transfer_16bit_to_8bit(img)
@@ -274,7 +260,7 @@ def create_gif(image_list, gif_name, duration = 0.3):
     imageio.mimsave(gif_name, frames, 'GIF', duration=duration)
     return
 
-# 将关键点转换为numpy格式
+#
 def kp_to_numpy(kplist):
     kp_lst = []
     for kp in kplist:
@@ -284,24 +270,16 @@ def kp_to_numpy(kplist):
 
 
 def mkdir(path):
-    # 去除首位空格
     path = path.strip()
-    # 去除尾部 \ 符号
     path = path.rstrip("\\")
-    # 判断路径是否存在
-    # 存在     True
-    # 不存在   False
     isExists = os.path.exists(path)
-    # 判断结果
+    #
     if not isExists:
-        # 如果不存在则创建目录
-        # 创建目录操作函数
         os.makedirs(path)
 
         print(path + ' 创建成功')
         return True
     else:
-        # 如果目录存在则不创建，并提示目录已存在
         print(path + ' 目录已存在')
         return False
 
@@ -311,7 +289,7 @@ def get_filename(path,filetype):
         for i in files:
             if filetype in i:
                 name.append(i)
-    return name #输出由有‘.csv’后缀的文件名组成的列表
+    return name
 
 def unionarea(imglist):
     imgtemp = np.zeros(imglist[0].shape)
@@ -344,7 +322,7 @@ def unionarea(imglist):
     imgtemp[lefttopx:rightbottomx, lefttopy:rightbottomy] = imgmask
     return imgtemp, (float(lefttopx), float(lefttopy)), (float(rightbottomx), float(rightbottomy))
 
-# 得到两幅图的重叠的最小区域
+#
 def unionareamin(img1,img2):
     imglefttopy_list1 = []
     imgrightbottomy_list1 = []
