@@ -1,0 +1,39 @@
+# All other configurations are set by default. If you want to add new config options,
+# please modify ../connectomics/config/config.py
+SYSTEM:
+  NUM_GPUS: 1
+  NUM_CPUS: 4
+MODEL:
+  ARCHITECTURE: 'unet_3d'
+  INPUT_SIZE: [56, 56, 56]
+  OUTPUT_SIZE: [56, 56, 56]
+  IN_PLANES: 1
+  OUT_PLANES: 1
+  LOSS_OPTION: [['WeightedBCE']]
+  TARGET_OPT: ['0']
+  WEIGHT_OPT: [['1']]
+DATASET:
+  IMAGE_NAME: 'train_im.tif'
+  LABEL_NAME: 'train_label.tif'
+  INPUT_PATH: 'E:/Zhu/ETreg/code/segmentation/cssegmentation/datasets/' # or your own dataset path
+  OUTPUT_PATH: 'E:/Zhu/ETreg/code/segmentation/cssegmentation/output/'
+  PAD_SIZE: [4, 14, 14]
+  DISTRIBUTED: False
+SOLVER:
+  LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  BASE_LR: 0.01
+  ITERATION_STEP: 1
+  ITERATION_SAVE: 5000
+  ITERATION_TOTAL: 20000
+  SAMPLES_PER_BATCH: 2
+INFERENCE:
+  INPUT_SIZE: [56, 56, 56]
+  OUTPUT_SIZE: [56, 56, 56]
+  IMAGE_NAME: 'test-input.tif' # or path to your test images
+  OUTPUT_PATH: 'E:/Zhu/ETreg/code/segmentation/cssegmentation/datasets/'
+  OUTPUT_NAME: 'result.h5'
+  PAD_SIZE: [4, 14, 14]
+  AUG_MODE: 'mean'
+  AUG_NUM: 4
+  STRIDE: [28, 28, 28]
+  SAMPLES_PER_BATCH: 2

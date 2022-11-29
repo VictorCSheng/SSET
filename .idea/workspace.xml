@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="518d7738-9de7-480d-8780-8fd66869d78d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csutil/coarsealign.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/coarsealign.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csutil/csBP.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/csBP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csutil/cselastic.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/cselastic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csutil/csgraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/csgraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csutil/imgfeature.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/imgfeature.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csutil/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/csutil/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../code/codetemp/insert_distillation" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -52,11 +46,23 @@
       <updated>1669618976415</updated>
       <workItem from="1669618980232" duration="123000" />
       <workItem from="1669622683163" duration="2088000" />
-      <workItem from="1669685815460" duration="3991000" />
+      <workItem from="1669685815460" duration="6958000" />
+      <workItem from="1669712515957" duration="1448000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
