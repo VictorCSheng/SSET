@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="518d7738-9de7-480d-8780-8fd66869d78d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/1imgrename_mrctif.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2imgava_mrctif.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_0coarsealign.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_1finealignpre.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4finealign.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/5stackdeformation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6stackselectarea.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/7insertnumcal.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/8Integrated_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compare_ssimandpsnr.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/connectedcomponents.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/.idea/stack.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/coarsealign.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/csBP.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/cselastic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/csgraph.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/densesift.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/imgfeature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csutil/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2IAKVzb8tpq5Uuu2OOZhNwSDMvl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="518d7738-9de7-480d-8780-8fd66869d78d" name="Default Changelist" comment="" />
+      <created>1669618976415</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669618976415</updated>
+      <workItem from="1669618980232" duration="123000" />
+      <workItem from="1669622683163" duration="2088000" />
+      <workItem from="1669685815460" duration="3102000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
