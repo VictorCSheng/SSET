@@ -30,9 +30,10 @@ For a detailed description of our workflow, please refer to the paper "An intell
 ## Examples and Comparison Results
 Here is a example of intact synapse reconstructed by our workflow at a resolution of 0.664 nm/voxel.
 And we compare it with the results of IMOD, TrackEM and Irtool.
-![Synapse reconstruction](https://github.com/VictorCSheng/SSET/main/paper_image/fig8.png)
 
-![Results comparison](https://github.com/VictorCSheng/SSET/main/paper_image/fig9.png)
+![Synapse reconstruction](https://github.com/VictorCSheng/SSET/raw/main/paper_image/fig8.png)
+
+![Results comparison](https://github.com/VictorCSheng/SSET/raw/main/paper_image/fig9.png)
 
 ## Contributing
 Please refer to the paper "An intelligent workflow for sub-nanoscale 3D reconstruction of intact synapses from serial section electron tomography".
