@@ -8,6 +8,7 @@ Multiple intact synapses in wild-type rat were reconstructed at a resolution of 
 - [Dependencies](#Dependencies)
 - [Instructions for Use](#Instructions-for-Use)
 - [Examples and Comparison Results](#Examples-and-Comparison-Results)
+- [Serial section ET data](#ET-data)
 - [Contributing](#Contributing)
 
 ## Dependencies
@@ -34,6 +35,11 @@ And we compare it with the results of IMOD, TrackEM and Irtool.
 ![Synapse reconstruction](https://github.com/VictorCSheng/SSET/blob/main/paperimage/fig8.png)
 
 ![Results comparison](https://github.com/VictorCSheng/SSET/blob/main/paperimage/fig9.png)
+
+## Serial section ET data
+Link: https://pan.baidu.com/s/1txzlIMxT0k9oZ7yAV0-stA 
+
+Extract code: xtv3 
 
 ## Contributing
 Please refer to the paper "An intelligent workflow for sub-nanoscale 3D reconstruction of intact synapses from serial section electron tomography".
