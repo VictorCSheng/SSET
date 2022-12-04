@@ -37,9 +37,8 @@ And we compare it with the results of IMOD, TrackEM and Irtool.
 ![Results comparison](https://github.com/VictorCSheng/SSET/blob/main/paperimage/fig9.png)
 
 ## Serial section ET data
-Link: https://pan.baidu.com/s/1txzlIMxT0k9oZ7yAV0-stA 
-
-Extract code: xtv3 
+We published our data on ScienceDB.
+The link is https://www.scidb.cn/s/eEVbqm
 
 ## Contributing
 Please refer to the paper "An intelligent workflow for sub-nanoscale 3D reconstruction of intact synapses from serial section electron tomography".
